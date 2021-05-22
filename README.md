@@ -1,3 +1,3 @@
 # hello_world
 This is to get to know github
-This is additional information- I am just learning how to make money out of this!!!!
+This is a fun code that encrypts a message and uses a key to decode.not perfect
