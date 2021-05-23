@@ -78,15 +78,22 @@ class LoginWindow(qtw.QWidget, Ui_Form):
 
     def generate_key(self):
         print("the_key")
-        # generate key
-        key = Fernet.generate_key()
-        file = open('login.key', 'wb')
-        #file = open('F:\\login.key', 'wb')
-        file.write(key)
-        file.close()
-        print(key)
-
-        
+        qtw.QMessageBox.critical(self, 'WARNING','This will overwrite your existing key!')
+        msg = qtw.QMessageBox.question(self,'Warning!',"The key will be overwritten and existing mesage will be lost! Do you want to proceed?",qtw.QMessageBox.Yes | qtw.QMessageBox.No)
+        if msg == qtw.QMessageBox.Yes:
+            # generate key
+            key = Fernet.generate_key()
+            file = open('login.key', 'wb')
+            #file = open('F:\\login.key', 'wb')
+            file.write(key)
+            file.close()
+            print(key)
+            qtw.QMessageBox.information(self, 'OK','You have a new key! This will not decrypt any existing message')
+        if msg == qtw.QMessageBox.No:
+            print("ok")
+            qtw.QMessageBox.information(self, 'OK','Your existing key is safe')
+            
+              
             
     def get_encrypted_message(self): 
         file = open('personal_message.txt', 'rb')
