@@ -17,7 +17,7 @@ class LoginWindow(qtw.QWidget, Ui_Form):
     def authenticate(self):
         username = self.username_lineEdit.text()
         password = self.password_lineEdit.text()
-        if username == 'user' and password == 'pass':
+        if username == 'use' and password == 'pass':
             ###########################################
             fetched_key = self.get_key()
             if not fetched_key == "None":
